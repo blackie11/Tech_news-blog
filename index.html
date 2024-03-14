@@ -40,7 +40,7 @@
                     </div>
 
                     <!-- Primary navigation menu -->
-                    <nav class="primary-navigation" arial-expanded="false" a>
+                    <nav class="primary-navigation" data-visible="false">
                         <ul class="nav-list">
                             <!-- Navigation items -->
                             <li class="nav-item"><a href="#">Home</a></li>
@@ -53,7 +53,11 @@
 
                     <!-- Toggle button for mobile menu -->
                     <div class="menu-container hidden">
-                        <button id="menu-toggle">
+                        <button
+                            id="menu-toggle"
+                            aria-expanded="false"
+                            aria-controls="primary-navigation"
+                        >
                             <img
                                 src="./src/assets/images/icon-menu.svg"
                                 alt="toggle-button"
@@ -69,12 +73,12 @@
                         <img
                             src="/src/assets/images/image-web-3-desktop.jpg"
                             alt="gaming-photo"
-                            class="show"
+                            class="large_screen"
                         />
                         <img
                             src="/src/assets/images/image-web-3-mobile.jpg"
                             alt="gaming-photo"
-                            class="hidden"
+                            class="small_screen"
                         />
                     </div>
                     <div class="heading">
@@ -181,5 +185,8 @@
                 >. Coded by <a href="#">Your Name Here</a>.
             </div>
         </div>
+
+        <!-- javaScript source -->
+        <script src="/src/app/main.js"></script>
     </body>
 </html>

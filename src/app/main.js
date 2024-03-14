@@ -1,45 +1,37 @@
-const toggleBtn=document.getElementById('menu-toggle');
+// const toggleBtn=document.getElementById('menu-toggle');
 
+document.addEventListener("DOMContentLoaded", function () {
+    const navToggle = document.getElementById("menu-toggle");
+    const primaryNav = document.querySelector(".primary-navigation");
 
-function navToggle() {
-  const nav= document.querySelector(".primary-nagivation");
-  if () {
-    
-  }
-  
-}
+    if (navToggle && primaryNav) {
+        function toggleNavbar() {
+            const visibility = primaryNav.getAttribute("data-visible");
 
+            if (visibility === "false") {
+                primaryNav.setAttribute("data-visible", "true");
+                navToggle.setAttribute("aria-expanded", "true");
+                primaryNav.classList.toggle("show");
+                navToggle.innerHTML = `<img
+                src="./src/assets/images/icon-menu-close.svg"
+                alt="toggle-button"
+                class="close_menu"
+            />`;
+            } else if (visibility === "true") {
+                primaryNav.setAttribute("data-visible", "false");
+                navToggle.setAttribute("aria-expanded", "false");
+                primaryNav.classList.remove("show");
+                navToggle.innerHTML = `<img
+                src="./src/assets/images/icon-menu.svg"
+                alt="toggle-button"
+            />`;
+            }
+        }
 
+        navToggle.addEventListener("click", toggleNavbar);
+    } else {
+        console.error("Could not find either navToggle or primaryNav element.");
+    }
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-toggleBtn.addEventListener('click', navToggle)
+// toggleBtn.addEventListener("click", navToggle);
