@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (navToggle && primaryNav) {
         function toggleNavbar() {
             const visibility = primaryNav.getAttribute("data-visible");
-
+            const main = document.querySelector(".overlay");
             if (visibility === "false") {
                 primaryNav.setAttribute("data-visible", "true");
                 navToggle.setAttribute("aria-expanded", "true");
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alt="toggle-button"
                 class="close_menu"
             />`;
+                main.style.display = "block";
             } else if (visibility === "true") {
                 primaryNav.setAttribute("data-visible", "false");
                 navToggle.setAttribute("aria-expanded", "false");
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 src="./src/assets/images/icon-menu.svg"
                 alt="toggle-button"
             />`;
+                main.style.display = "none";
             }
         }
 

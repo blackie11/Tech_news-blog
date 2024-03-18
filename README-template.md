@@ -1,22 +1,20 @@
 # Frontend Mentor - News homepage solution
 
-This is a solution to the [News homepage challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [News homepage challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [What I learned](#what-i-learned)
+    -   [Continued development](#continued-development)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -24,85 +22,119 @@ This is a solution to the [News homepage challenge on Frontend Mentor](https://w
 
 Users should be able to:
 
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+-   View the optimal layout for the interface depending on their device's screen size
+-   See hover and focus states for all interactive elements on the page
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./src/assets/images/Screen%20Shot%202024-03-15%20at%2015.38.55.png)
+![](./src/assets/images/Screen%20Shot%202024-03-15%20at%2015.38.07.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Solution URL: [Add solution URL here](https://your-solution-url.com)
+-   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+-   Semantic HTML5 markup
+-   SCSS custom properties
+-   Flexbox
+-   CSS Grid
+-   Mobile-first workflow
+-   Vanilla JavaScript
+-   [Styled Components](https://styled-components.com/) - For styles
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+-   responsive design
+    -applying modifier classes using javaScript
+    -application of grid auto flow
 
 To see how you can add code snippets, see below:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<nav class="primary-navigation center-items" data-visible="false">
+    <ul class="nav-list">
+        <!-- Navigation items -->
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">News</a></li>
+        <li class="nav-item"><a href="#">Popular</a></li>
+        <li class="nav-item"><a href="#">Trending</a></li>
+        <li class="nav-item"><a href="#">Categories</a></li>
+    </ul>
+</nav>
+
+<!-- Toggle button for mobile menu -->
+<div class="menu-container hidden">
+    <button
+        id="menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+    ></button>
+</div>
 ```
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.315);
+    z-index: 1;
 }
 ```
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+if (navToggle && primaryNav) {
+    function toggleNavbar() {
+        const visibility = primaryNav.getAttribute("data-visible");
+        const main = document.querySelector(".overlay");
+        if (visibility === "false") {
+            primaryNav.setAttribute("data-visible", "true");
+            navToggle.setAttribute("aria-expanded", "true");
+            primaryNav.classList.toggle("show");
+            navToggle.innerHTML = `<img
+                src="./src/assets/images/icon-menu-close.svg"
+                alt="toggle-button"
+                class="close_menu"
+            />`;
+            main.style.display = "block";
+        } else if (visibility === "true") {
+            primaryNav.setAttribute("data-visible", "false");
+            navToggle.setAttribute("aria-expanded", "false");
+            primaryNav.classList.remove("show");
+            navToggle.innerHTML = `<img
+                src="./src/assets/images/icon-menu.svg"
+                alt="toggle-button"
+            />`;
+            main.style.display = "none";
+        }
+    }
 }
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+Understanding more the fundamentals of Javascript even as i make use of it daily while trying to advance in my use of tailwind css in styling projects.
+Also grow in making my project more accessible to screen readers and keyboard users.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+-   [ resource 1](https://www.youtube.com) - This helped me to understand and vistualize how the functionality of the project would lok like.
+-   [resource 2](https://www.w3school.com) - This is an amazing website help me to understand more some of the properties and methods in use while also teaching me best way to use them.
+-   [resource 3](https://www.stackoverflow.com) - this helped me when i encounter some bug on my code, also good for finding solution to common issues
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+-   Website - [Ahiakwo Great](https://blackie-portfolio.vercel.app/)
+-   Frontend Mentor - [@blackie](https://www.frontendmentor.io/profile/blackie)
+-   Twitter - [@GreatAhiakwo](https://www.twitter.com/@GreatAhiakwo)
 
 ## Acknowledgments
 
